@@ -6,6 +6,9 @@ namespace Tests\Unit\Domain\Article;
 
 use DateTimeImmutable;
 use LaravelDay\Article\Article;
+use LaravelDay\Article\ValueObject\Body;
+use LaravelDay\Article\ValueObject\ID;
+use LaravelDay\Article\ValueObject\Title;
 use Tests\TestCase;
 
 class ArticleTest extends TestCase
@@ -15,9 +18,9 @@ class ArticleTest extends TestCase
      */
     public function shouldCreateArticle()
     {
-        $id = 1;
-        $title = 'Questo è un titolo';
-        $body = 'Questo è un body';
+        $id = new ID(1);
+        $title = new Title('Questo è un titolo');
+        $body = new Body('Questo è un body');
         $creationDate = new DateTimeImmutable();
 
         $article = new Article($id, $title, $body, $creationDate);
