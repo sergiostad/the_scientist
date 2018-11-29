@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Unit\Domain\Article\valueObject;
+declare(strict_types=1);
 
+namespace Tests\Unit\Domain\Article\valueObject;
 
 use LaravelDay\Article\ValueObject\Title;
 use Tests\TestCase;
@@ -10,6 +11,7 @@ class TitleTest extends TestCase
 {
     /**
      * @test
+     *
      * @throws \LaravelDay\Article\TitleToShort
      */
     public function shouldCreateTitle()
@@ -18,6 +20,6 @@ class TitleTest extends TestCase
 
         $title = new Title($expectedTitle);
 
-        $this->assertEquals($expectedTitle, (string)$title);
-}
+        $this->assertEquals($expectedTitle, (string) $title);
+    }
 }

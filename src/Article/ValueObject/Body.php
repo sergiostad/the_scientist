@@ -1,7 +1,8 @@
 <?php
 
-namespace LaravelDay\Article\ValueObject;
+declare(strict_types=1);
 
+namespace LaravelDay\Article\ValueObject;
 
 class Body
 {
@@ -12,19 +13,20 @@ class Body
 
     /**
      * Body constructor.
+     *
      * @param string $body
      */
     public function __construct(string $body)
     {
-        if (strlen($body) < 10) {
+        if (\mb_strlen($body) < 10) {
             throw new BodyToShort('Title to short');
         }
         $this->body = $body;
     }
 
-    public function isEqual(Body $body): bool
+    public function isEqual(self $body): bool
     {
-        return (string)$body === $this->__toString();
+        return (string) $body === $this->__toString();
     }
 
     public function __toString()

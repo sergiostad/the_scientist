@@ -1,7 +1,8 @@
 <?php
 
-namespace LaravelDay\Article\ValueObject;
+declare(strict_types=1);
 
+namespace LaravelDay\Article\ValueObject;
 
 use LaravelDay\Article\ValueObject\Exception\TitleToShort;
 
@@ -14,20 +15,22 @@ final class Title
 
     /**
      * Title constructor.
+     *
      * @param string $title
+     *
      * @throws TitleToShort
      */
     public function __construct(string $title)
     {
-        if (\strlen($title) < 10) {
+        if (\mb_strlen($title) < 10) {
             throw new TitleToShort('Title to short');
         }
         $this->title = $title;
     }
 
-    public function isEqual(Title $title): bool
+    public function isEqual(self $title): bool
     {
-        return (string)$title === $this->__toString();
+        return (string) $title === $this->__toString();
     }
 
     public function __toString()

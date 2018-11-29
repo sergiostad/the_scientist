@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelDay\Article\ValueObject;
+declare(strict_types=1);
 
+namespace LaravelDay\Article\ValueObject;
 
 class ID
 {
-
 }
